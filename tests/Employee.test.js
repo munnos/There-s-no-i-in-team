@@ -1,21 +1,21 @@
-// Classes do same thing as using prototype model
-// Bit like a blueprint that describes a particular object in a non-specific way
-class Employee {
-    constructor(name, id, ){
-        this.name = name;
-        this.id = id;
-        this.email = email;
-} 
-getName(){
+const Employee = require("../lib/Employee");
 
-} 
-getId(){
+describe("employee", () => {
+  it("should create employee object", () => {
+    const e = new Employee();
+    expect(typeof e).toBe("object");
+  });
+});
 
-}
-getEmail(){
+describe("constructor argument", () => {
+    it("should set name via constructor arguments", () => {
+      const name = "michael";
+      const e = new Employee(name);
+      expect(e.name).toBe("michael");
+    });
+  });
 
-}
-getRole(){
-    
-}
-}
+// test("should create employee object",() => {
+//     const e = new Employee();
+//     expect(typeof(e)).toBe("object");
+// })

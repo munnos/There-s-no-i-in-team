@@ -1,11 +1,11 @@
-const Intern = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 
-describe("Engineer", () => {
+describe("Intern", () => {
     describe("Initialisation", () => {
-    it("should create employee object", () => {
-      const e = new Engineer();
-      expect(typeof e).toEqual("object");
+    it("should create intern object", () => {
+      const i = new Intern();
+      expect(typeof i).toEqual("object");
     });
   
  
@@ -16,35 +16,42 @@ describe("Engineer", () => {
         const name = "michael";
         const id = "45678";
         const email = "josephdesirejob@ntl.com";
+        const school = "University of Liverpool";
         
         // test for object properties
-        const e = new Engineer(name,id,email);
-        expect(e.name).toBe("michael");
-        expect(e.id).toBe("45678");
-        expect(e.email).toBe("josephdesirejob@ntl.com");
+        const i = new Intern (name,id,email,school);
+        expect(i.name).toBe("michael");
+        expect(i.id).toBe("45678");
+        expect(i.email).toBe("josephdesirejob@ntl.com");
+        expect(i.school).toBe("University of Liverpool");
       });
 
       it("function getName() should return given name; function getID() should return given id; and function getEmail() should return given email" , () => {
         const name = "michael";
         const id = "45678";
         const email = "josephdesirejob@ntl.com";
+        const school = "University of Liverpool";
         
         // getName() test
-        const e = new Engineer (name, id, email);
-        const spyName = jest.spyOn(e, "getName").mockImplementation(() => 'michael');
-        expect(e.getName()).toBe("michael");
+        const i = new Intern (name, id, email, school);
+        const spyName = jest.spyOn(i, "getName").mockImplementation(() => 'michael');
+        expect(i.getName()).toBe("michael");
   
         // getId() test
-        const spyId = jest.spyOn(e, "getId").mockImplementation(() => "45678");
-        expect(e.getId()).toBe("45678");
+        const spyId = jest.spyOn(i, "getId").mockImplementation(() => "45678");
+        expect(i.getId()).toBe("45678");
   
         // getEmail() test
-        const spyEmail = jest.spyOn(e, "getEmail").mockImplementation(() => "josephdesirejob@ntl.com");
-        expect(e.getEmail()).toBe("josephdesirejob@ntl.com");
+        const spyEmail = jest.spyOn(i, "getEmail").mockImplementation(() => "josephdesirejob@ntl.com");
+        expect(i.getEmail()).toBe("josephdesirejob@ntl.com");
 
         // getRole() test
-        const spyRole = jest.spyOn(e, "getRole").mockImplementation(() => "Engineer");
-        expect(e.getRole()).toBe("Engineer");
+        const spyRole = jest.spyOn(i, "getRole").mockImplementation(() => "Intern");
+        expect(i.getRole()).toBe("Intern");
+
+        // getSchool() test
+        const spySchool = jest.spyOn(i, "getSchool").mockImplementation(() => "University of Liverpool");
+        expect(i.getSchool()).toBe("University of Liverpool");
   
   
       })})});

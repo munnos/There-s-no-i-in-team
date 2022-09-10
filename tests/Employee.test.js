@@ -46,7 +46,7 @@ describe("employee", () => {
   //     });
   //   });
 
-    it("function getName() should return given name; function getID() should return given id; and function getEmail() should return given email" , () => {
+    it("function getName() should return given name; function getID() should return given id; function getEmail() should return given email; and getRole should return eponymous string", () => {
       const name = "michael";
       const id = "45678";
       const email = "josephdesirejob@ntl.com";
@@ -63,6 +63,9 @@ describe("employee", () => {
       // getEmail() test
       const spyEmail = jest.spyOn(e, "getEmail").mockImplementation(() => "josephdesirejob@ntl.com");
       expect(e.getEmail()).toBe("josephdesirejob@ntl.com");
+// getRole() test
+const spyRole = jest.spyOn(e, "getRole").mockImplementation(() => "Employee");
+expect(e.getRole()).toBe("Employee");
 
 
     })})});

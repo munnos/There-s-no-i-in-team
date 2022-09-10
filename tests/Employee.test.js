@@ -15,41 +15,64 @@ describe("employee", () => {
 
 // });
 
-    it("should set name via constructor arguments", () => {
-      const name = "michael";
-      const e = new Employee(name,undefined,undefined);
-      expect(e.name).toBe("michael");
+    it("should set name, id and email via constructor arguments", () => {
       
-    });
-
-
-  it("should set id via constructor arguments", () => {
-      const id = "45678";
-      const e = new Employee(undefined,id,undefined);
-      expect(e.id).toBe("45678");
-      console.log(Employee);
-      
-    });
-
-    
-
-      it("should set email via constructor arguments", () => {
-        const email = "josephdesirejob@ntl.com";
-        const e = new Employee(undefined,undefined,email);
-        expect(e.email).toBe("josephdesirejob@ntl.com");
-      });
-    });
-
-    it("function getName() should return given name", () => {
+      // Variables for constructor
       const name = "michael";
       const id = "45678";
       const email = "josephdesirejob@ntl.com";
-      // const e = new Employee (name, id, email);
+      // test for object properties
+      const e = new Employee(name,id,email);
+      expect(e.name).toBe("michael");
+      expect(e.id).toBe("45678");
+      expect(e.email).toBe("josephdesirejob@ntl.com");
+    });
+
+
+  // it("should set id via constructor arguments", () => {
+  //     const id = "45678";
+  //     const e = new Employee(undefined,id,undefined);
+  //     expect(e.id).toBe("45678");
+  //     console.log(Employee);
+      
+  //   });
+
+    
+
+  //     it("should set email via constructor arguments", () => {
+  //       const email = "josephdesirejob@ntl.com";
+  //       const e = new Employee(undefined,undefined,email);
+  //       expect(e.email).toBe("josephdesirejob@ntl.com");
+  //     });
+  //   });
+
+    it("function getName() should return given name; function getID() should return given id; and function getEmail() should return given email" , () => {
+      const name = "michael";
+      const id = "45678";
+      const email = "josephdesirejob@ntl.com";
+      
+      // getName() test
       const e = new Employee (name, id, email);
-      const spy = jest.spyOn(e, "getName").mockImplementation(() => 'michael');
+      const spyName = jest.spyOn(e, "getName").mockImplementation(() => 'michael');
       expect(e.getName()).toBe("michael");
 
-    })})
+      // getId() test
+      const spyId = jest.spyOn(e, "getId").mockImplementation(() => "45678");
+      expect(e.getId()).toBe("45678");
+
+      // getEmail() test
+      const spyEmail = jest.spyOn(e, "getEmail").mockImplementation(() => "josephdesirejob@ntl.com");
+      expect(e.getEmail()).toBe("josephdesirejob@ntl.com");
+
+
+    })})});
+
+
+
+    // it("function getID() should return id")
+    // });
+
+    
 
 
 

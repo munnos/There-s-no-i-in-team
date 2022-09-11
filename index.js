@@ -2,13 +2,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 // importing classes
-const Employee = require('../lib/Employee');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
-const Manager = require('../lib/Manager');
+const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+const generateHTML = require("./dist/generateHTML");
+const employeedataArray = [];
 
 
-const managerQuestions = [ {
+function main () {
+const managerQuestions = () => {
+  inquirer.prompt([
+    {
     type: "message",
     name: "managerName",
     message: "What is the manager's name?",
@@ -29,17 +34,62 @@ const managerQuestions = [ {
         name: 'managerId',
         message: "What is the manager's ID?"
       },
-]
+]) 
+.then((data) => {
+  const managerData = new Manager(
+    data.name,
+    data.id,
+    data.email,
+    data.officeNumber
+  );
+  employeedataArray.push(managerData);
+  addEmployee()
+});
+};
 
 
-const mainQuestions = [ {
-   
+
+const addEmployee = () => {
+  inquirer.prompt([{
+
+  type: "list",
+  name: "addEmployee",
+  message: "Would you like to add another employee?",
+  choices: ["Yes", "No"],
+
+  },
+])
+  .then((data) => {
+    if (data.addEmployee === "Yes") {
+      createEmployee();
+    } else {
+      generateHTML();
+    }
+  });
+
+  };
+const createEmployee = () => {
+  inquirer.prompt([{
     type: 'list',
     name: 'teamRole',
     message: "Which role does the team member have?",
     choices: ["Employee", "Engineer", "Intern", "Manager"],
 },
-  ]
+  ])
+  .then((data) => {
+    if (data.addEmployee === "Employee") {
+      createEmployee();
+    }
+    if (data.addEmployee === "Engineer") {
+      createEngineer();
+    } else if (data.addEmployee === "Intern") {
+      createIntern();
+    } else {
+      renderHtml();
+    }
+  });
+};
+
 
   const internQuestions = [ {
     type: 'input',
@@ -96,6 +146,8 @@ const engineerQuestions = [ {
     message: "What is the Engineer's email address?",
   },
 ]
+
+
 
   .then((answers) => {
     const htmlPageContent = generateHTML(answers);

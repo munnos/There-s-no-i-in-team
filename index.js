@@ -11,7 +11,7 @@ const employeedataArray = [];
 
 
 function main () {
-const managerQuestions = () => {
+const createManager = () => {
   inquirer.prompt([
     {
     type: "message",
@@ -43,13 +43,13 @@ const managerQuestions = () => {
     data.officeNumber
   );
   employeedataArray.push(managerData);
-  addEmployee()
+  addemployeeOption()
 });
 };
 
 
 
-const addEmployee = () => {
+const addemployeeOption = () => {
   inquirer.prompt([{
 
   type: "list",
@@ -61,14 +61,14 @@ const addEmployee = () => {
 ])
   .then((data) => {
     if (data.addEmployee === "Yes") {
-      createEmployee();
+      addEmployee();
     } else {
       generateHTML();
     }
   });
 
   };
-const createEmployee = () => {
+const addEmployee = () => {
   inquirer.prompt([{
     type: 'list',
     name: 'teamRole',
@@ -77,10 +77,14 @@ const createEmployee = () => {
 },
   ])
   .then((data) => {
-    if (data.addEmployee === "Employee") {
+    if (data.addEmployee === "Manager") {
+      createManager();
+    }
+
+    else if (data.addEmployee === "Employee") {
       createEmployee();
     }
-    if (data.addEmployee === "Engineer") {
+    else if (data.addEmployee === "Engineer") {
       createEngineer();
     } else if (data.addEmployee === "Intern") {
       createIntern();
@@ -90,8 +94,8 @@ const createEmployee = () => {
   });
 };
 
-
-  const internQuestions = [ {
+const createIntern = () => {
+  inquirer.prompt([{
     type: 'input',
     name: 'internName',
     choices: "What is the intern's name?",
@@ -112,25 +116,57 @@ const createEmployee = () => {
     message: "What is the intern's school?",
 
   },
-  ]
+])
+.then((data) => {
+  const internData = new Intern(
+  data.name,
+  data.id,
+  data.email,
+  data.school);
+  employeedataArray.push(internData);
+  addemployeeOption();
+});
+};
 
-  const employeeQuestions = [ {
+
+  const createEmployee = () => {
+    inquirer.prompt([
+  {
     type: 'input',
-    name: 'employeeName',
+    name: 'engineerName',
     choices: "What is the Employee's name?",
   },
   {
     type: "input",
-    name: "employeeId",
+    name: "engineerId",
     message: "What is the Employee's ID?",
   },
   { 
     type: 'input',
-    name: 'employeeEmail',
+    name: 'engineerEmail',
     message: "What is the Employee's email address?",
   },
-    ]
-const engineerQuestions = [ {
+  {
+    type: 'input',
+    name: 'engineerGithub',
+    message: "What is the Engineer's github url?",
+  }
+    ])
+  .then((data) => {
+    const employeeData = new Employee(
+    data.name,
+    data.id,
+    data.email);
+    employeedataArray.push(internData);
+    addemployeeOption();
+    });
+}
+    
+const createEngineer = () => {
+
+
+inquirer.prompt([
+  {
     type: 'input',
     name: 'engineerName',
     choices: "What is the Engineer's name?",
@@ -145,17 +181,30 @@ const engineerQuestions = [ {
     name: 'engineerEmail',
     message: "What is the Engineer's email address?",
   },
-]
-
-
-
-  .then((answers) => {
-    const htmlPageContent = generateHTML(answers);
-
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
-    );
+])
+  .then((data) => {
+    const internData = new Engineer(
+    data.name,
+    data.id,
+    data.email,
+    data.sc);
+    employeedataArray.push(internData);
+    addemployeeOption();
   });
+  };
+
+
+
+const generateHTML = () => {
+  fs.writeFileSync(renderedHTML, generateHTML(employeedataArray), "utf-8");
+};
+
+createManager();
+
+}
+ 
+main();
+  
 
 
 

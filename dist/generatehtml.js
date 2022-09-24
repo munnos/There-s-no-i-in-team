@@ -1,3 +1,4 @@
+// const internal = require("stream");
 const Employee = require("../lib/Employee");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
@@ -98,7 +99,7 @@ const allteamCards = (employeeProfiles) => {
 return teamCards.join("");
       };
 
-      module.exports = (profiles) => {
+      module.exports = (employeeProfiles) => {
 
       
 return `<!DOCTYPE html>

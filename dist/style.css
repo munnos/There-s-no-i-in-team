@@ -1,2 +1,55 @@
 /* Don't need to do template literals for this. Look at mini project for wk9. CSS styling
 will be hard coded */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+    .header {
+width: 100%;
+height: 175px;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: purple;
+color: white;
+
+    }
+
+    .card-holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .individual-card {
+        
+        margin: 20px;
+        background-color: aquamarine;
+        list-style: none;
+
+
+    }
+
+    .card-header {
+        background-color: wheat;
+        color: black;
+        width: 100%;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+       
+        
+    }
+
+    .card-body {
+        list-style: none;
+    }
+
+    li {
+        list-style: none;
+    }

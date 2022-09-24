@@ -5,7 +5,7 @@ const Intern = require("../lib/Intern");
 const Manager = require("../lib/Manager");
 
 const allteamCards = (employeeProfiles) => {
-  teamCards = [];
+  const teamCards = [];
 
   const createManager = (manager) => {
   return `<article class="individualCards">
@@ -59,14 +59,14 @@ const allteamCards = (employeeProfiles) => {
     const createIntern = (intern) => {
       return `<article class="individualCards">
       <div class="cardHeader">
-      <h2> Name: ${manager.name}</h2>
+      <h2> Name: ${intern.name}</h2>
       </div>
       <div class="cardBody">
-      <h3> Team role: ${manager.getRole()}</h3>
+      <h3> Team role: ${intern.getRole()}</h3>
       <ul>
-      <li> Email: ${manager.email}</li>
-      <li> id: ${manager.id}</li>
-      <li>Office Number: ${manager.officeNumber}</li>
+      <li> Email: ${intern.email}</li>
+      <li> id: ${intern.id}</li>
+      <li>Office Number: ${intern.officeNumber}</li>
       </ul>
       </div>
       </article>`

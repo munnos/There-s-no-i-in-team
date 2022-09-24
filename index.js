@@ -12,18 +12,20 @@ const path = require("path");
 
 const renderedHTML = path.join(__dirname, "template.html");
 
-
-
 function main() {
- async function createManager() {
-   await inquirer
+  async function createManager() {
+    await inquirer
       .prompt([
         {
           type: "message",
           name: "managerName",
           message: "What is the manager's name?",
         },
-
+        {
+          type: "input",
+          name: "managerId",
+          message: "What is the manager's ID?",
+        },
         {
           type: "input",
           name: "managerEmail",
@@ -34,13 +36,10 @@ function main() {
           name: "officeNumber",
           message: "What is the manager's office number?",
         },
-        {
-          type: "input",
-          name: "managerId",
-          message: "What is the manager's ID?",
-        },
+        
       ])
       .then((data) => {
+        console.log(data);
         const managerData = new Manager(
           data.name,
           data.id,
@@ -48,12 +47,13 @@ function main() {
           data.officeNumber
         );
         employeedataArray.push(managerData);
+        console.log(employeedataArray);
         addemployeeOption();
       });
-  };
+  }
 
   async function addemployeeOption() {
-   await inquirer
+    await inquirer
       .prompt([
         {
           type: "list",
@@ -63,21 +63,22 @@ function main() {
         },
       ])
       .then((data) => {
+        console.log(data);
         if (data.addEmployee === "Yes") {
           addEmployee();
         } else {
           generateHTML();
         }
       });
-  };
+  }
 
-  async function createIntern () {
+  async function createIntern() {
     await inquirer
       .prompt([
         {
           type: "input",
           name: "internName",
-          choices: "What is the intern's name?",
+          message: "What is the intern's name?",
         },
         {
           type: "input",
@@ -96,6 +97,7 @@ function main() {
         },
       ])
       .then((data) => {
+        console.log(data);
         const internData = new Intern(
           data.name,
           data.id,
@@ -103,21 +105,22 @@ function main() {
           data.school
         );
         employeedataArray.push(internData);
+        console.log(employeedataArray);
         addemployeeOption();
       });
-  };
+  }
 
-  async function createEmployee () {
+  async function createEmployee() {
     await inquirer
       .prompt([
         {
           type: "input",
-          name: "engineerName",
-          choices: "What is the Employee's name?",
+          name: "employeeName",
+          message: "What is the Employee's name?",
         },
         {
           type: "input",
-          name: "engineerId",
+          name: "employeeId",
           message: "What is the Employee's ID?",
         },
         {
@@ -125,18 +128,15 @@ function main() {
           name: "engineerEmail",
           message: "What is the Employee's email address?",
         },
-        {
-          type: "input",
-          name: "engineerGithub",
-          message: "What is the Engineer's github url?",
-        },
       ])
       .then((data) => {
+        console.log(data);
         const employeeData = new Employee(data.name, data.id, data.email);
-        employeedataArray.push(Data);
+        employeedataArray.push(employeeData);
+        console.log(employeedataArray);
         addemployeeOption();
       });
-  };
+  }
 
   async function createEngineer() {
     await inquirer
@@ -144,7 +144,7 @@ function main() {
         {
           type: "input",
           name: "engineerName",
-          choices: "What is the Engineer's name?",
+          message: "What is the Engineer's name?",
         },
         {
           type: "input",
@@ -156,18 +156,25 @@ function main() {
           name: "engineerEmail",
           message: "What is the Engineer's email address?",
         },
+        {
+          type: "input",
+          name: "engineerGithub",
+          message: "What is the Engineer's github url?",
+        },
       ])
       .then((data) => {
-        const internData = new Engineer(
+        console.log(data);
+        const engineerData = new Engineer(
           data.name,
           data.id,
           data.email,
-          data.sc
+          data.github
         );
-        employeedataArray.push(internData);
+        employeedataArray.push(engineerData);
+        console.log(employeedataArray);
         addemployeeOption();
       });
-  };
+  }
 
   async function addEmployee() {
     await inquirer
@@ -180,24 +187,27 @@ function main() {
         },
       ])
       .then((data) => {
-      
-        if (data.addEmployee === "Employee") {
+        console.log(data);
+
+        if (data.teamRole === "Employee") {
           createEmployee();
-        } else if (data.addEmployee === "Engineer") {
+        } else if (data.teamRole === "Engineer") {
           createEngineer();
-        } else if (data.addEmployee === "Intern") {
+        } else if (data.teamRole === "Intern") {
           createIntern();
         } else {
           generateHTML();
         }
-      })
-      
-  };
-
-  
+      });
+  }
 
   const generateHTML = () => {
-    fs.writeFileSync(renderedHTML, generatehtmlFile(employeedataArray), "utf-8");
+    fs.writeFileSync(
+      renderedHTML,
+      generatehtmlFile(employeedataArray),
+      console.log(employeedataArray),
+      "utf-8"
+    );
   };
 
   createManager();

@@ -1,55 +1,67 @@
 /* Don't need to do template literals for this. Look at mini project for wk9. CSS styling
 will be hard coded */
-
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap');
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Inter Tight", sans-serif;
 }
 
-    .header {
-width: 100%;
-height: 175px;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: purple;
-color: white;
+.header {
+  width: 100%;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: purple;
+  color: white;
+}
 
-    }
+.card-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
 
-    .card-holder {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-top: 30px;
-    }
+.individual-card {
+  margin: 20px;
+  margin-left: 20px;
+  background-color: aquamarine;
+  min-width: 300px;
+  line-height: 50px;
+  list-style: none;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
 
-    .individual-card {
-        
-        margin: 20px;
-        background-color: aquamarine;
-        list-style: none;
+.card-header {
+  background-color: wheat;
+  color: black;
+  width: 100%;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.card-body {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
 
 
-    }
+.fa-regular .fa-graduation-cap {
 
-    .card-header {
-        background-color: wheat;
-        color: black;
-        width: 100%;
-        display: flex;
-        justify-self: center;
-        align-items: center;
-       
-        
-    }
+  padding-left: 20px;
+}
 
-    .card-body {
-        list-style: none;
-    }
+.fa-solid .fa-people-roof {
 
-    li {
-        list-style: none;
-    }
+  padding-left: 20%;
+}

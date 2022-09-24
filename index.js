@@ -110,33 +110,33 @@ function main() {
       });
   }
 
-  async function createEmployee() {
-    await inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "employeeName",
-          message: "What is the Employee's name?",
-        },
-        {
-          type: "input",
-          name: "employeeId",
-          message: "What is the Employee's ID?",
-        },
-        {
-          type: "input",
-          name: "engineerEmail",
-          message: "What is the Employee's email address?",
-        },
-      ])
-      .then((data) => {
-        console.log(data);
-        const employeeData = new Employee(data.employeeName, data.employeeId, data.engineerEmail);
-        employeedataArray.push(employeeData);
-        console.log(employeedataArray);
-        addemployeeOption();
-      });
-  }
+  // async function createEmployee() {
+  //   await inquirer
+  //     .prompt([
+  //       {
+  //         type: "input",
+  //         name: "employeeName",
+  //         message: "What is the Employee's name?",
+  //       },
+  //       {
+  //         type: "input",
+  //         name: "employeeId",
+  //         message: "What is the Employee's ID?",
+  //       },
+  //       {
+  //         type: "input",
+  //         name: "engineerEmail",
+  //         message: "What is the Employee's email address?",
+  //       },
+  //     ])
+  //     .then((data) => {
+  //       console.log(data);
+  //       const employeeData = new Employee(data.employeeName, data.employeeId, data.engineerEmail);
+  //       employeedataArray.push(employeeData);
+  //       console.log(employeedataArray);
+  //       addemployeeOption();
+  //     });
+  // }
 
   async function createEngineer() {
     await inquirer
@@ -183,15 +183,15 @@ function main() {
           type: "list",
           name: "teamRole",
           message: "Which role does the team member have?",
-          choices: ["Employee", "Engineer", "Intern", "No"],
+          choices: ["Engineer", "Intern"],
         },
       ])
       .then((data) => {
         console.log(data);
 
-        if (data.teamRole === "Employee") {
-          createEmployee();
-        } else if (data.teamRole === "Engineer") {
+        // if (data.teamRole === "") {
+        //   createEmployee();
+        if (data.teamRole === "Engineer") {
           createEngineer();
         } else if (data.teamRole === "Intern") {
           createIntern();
@@ -206,11 +206,13 @@ function main() {
       renderedHTML,
       generatehtmlFile(employeedataArray),
       console.log(employeedataArray),
-      "utf-8"
-    );
+      "utf-8",
+      console.log("check for finished page under template.html"));
+  };
+  createManager();
   };
 
-  createManager();
-}
+  
+
 
 main();

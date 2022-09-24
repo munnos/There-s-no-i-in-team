@@ -41,9 +41,9 @@ function main() {
       .then((data) => {
         console.log(data);
         const managerData = new Manager(
-          data.name,
-          data.id,
-          data.email,
+          data.managerName,
+          data.managerId,
+          data.managerEmail,
           data.officeNumber
         );
         employeedataArray.push(managerData);
@@ -99,9 +99,9 @@ function main() {
       .then((data) => {
         console.log(data);
         const internData = new Intern(
-          data.name,
-          data.id,
-          data.email,
+          data.internName,
+          data.internId,
+          data.internEmail,
           data.school
         );
         employeedataArray.push(internData);
@@ -131,7 +131,7 @@ function main() {
       ])
       .then((data) => {
         console.log(data);
-        const employeeData = new Employee(data.name, data.id, data.email);
+        const employeeData = new Employee(data.employeeName, data.employeeId, data.engineerEmail);
         employeedataArray.push(employeeData);
         console.log(employeedataArray);
         addemployeeOption();
@@ -165,10 +165,10 @@ function main() {
       .then((data) => {
         console.log(data);
         const engineerData = new Engineer(
-          data.name,
-          data.id,
-          data.email,
-          data.github
+          data.engineerName,
+          data.engineerId,
+          data.engineerEmail,
+          data.engineerGithub
         );
         employeedataArray.push(engineerData);
         console.log(employeedataArray);

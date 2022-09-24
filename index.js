@@ -15,8 +15,8 @@ const renderedHTML = path.join(__dirname, "template.html");
 
 
 function main() {
-  const createManager = () => {
-    inquirer
+ async function createManager() {
+   await inquirer
       .prompt([
         {
           type: "message",
@@ -52,8 +52,8 @@ function main() {
       });
   };
 
-  const addemployeeOption = () => {
-    inquirer
+  async function addemployeeOption() {
+   await inquirer
       .prompt([
         {
           type: "list",
@@ -71,8 +71,8 @@ function main() {
       });
   };
 
-  const createIntern = () => {
-    inquirer
+  async function createIntern () {
+    await inquirer
       .prompt([
         {
           type: "input",
@@ -107,8 +107,8 @@ function main() {
       });
   };
 
-  const createEmployee = () => {
-    inquirer
+  async function createEmployee () {
+    await inquirer
       .prompt([
         {
           type: "input",
@@ -132,14 +132,14 @@ function main() {
         },
       ])
       .then((data) => {
-        const employeeData = new Engineer(data.name, data.id, data.email);
-        employeedataArray.push(internData);
+        const employeeData = new Employee(data.name, data.id, data.email);
+        employeedataArray.push(Data);
         addemployeeOption();
       });
   };
 
-  const createEngineer = () => {
-    inquirer
+  async function createEngineer() {
+    await inquirer
       .prompt([
         {
           type: "input",
@@ -169,20 +169,19 @@ function main() {
       });
   };
 
-  const addEmployee = () => {
-    inquirer
+  async function addEmployee() {
+    await inquirer
       .prompt([
         {
           type: "list",
           name: "teamRole",
           message: "Which role does the team member have?",
-          choices: ["Employee", "Engineer", "Intern", "Manager"],
+          choices: ["Employee", "Engineer", "Intern", "No"],
         },
       ])
       .then((data) => {
-        if (data.addEmployee === "Manager") {
-          createManager();
-        } else if (data.addEmployee === "Employee") {
+      
+        if (data.addEmployee === "Employee") {
           createEmployee();
         } else if (data.addEmployee === "Engineer") {
           createEngineer();
@@ -192,9 +191,7 @@ function main() {
           generateHTML();
         }
       })
-      .then((data) => {
-        const employeeData = new Employee(data.name, data.id, data.email);
-      });
+      
   };
 
   

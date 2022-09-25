@@ -22,7 +22,7 @@ and populate the send line of the email with the team member's email address and
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-* [Walkthrough video](#walkthrough video)
+* [Walkthrough](#walkthroughvideo)
 
 ## Installation
 

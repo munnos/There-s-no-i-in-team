@@ -22,7 +22,7 @@ and populate the send line of the email with the team member's email address and
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-* [Walkthrough](#walkthroughvideo)
+* [Walkthrough](#walkthrough)
 
 ## Installation
 
@@ -76,6 +76,6 @@ The four classes used to populate the HTML were extensively tested using the Jes
 
 If you have any queries regarding this project, you can contact me at munnos@hotmail.co.uk. My projects are available at: https://github.com/github/munnos.
 
-## Link to walkthrough video
+## Walkthrough
 
 https://drive.google.com/file/d/1OYjhjPbIqHE2EeC0-AdgFU1UjS6RN1ab/view

@@ -1,9 +1,10 @@
-// const internal = require("stream");
+// Requiring all classes needed to get access to properties to populate generated html
 const Employee = require("../lib/Employee");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 const Manager = require("../lib/Manager");
 
+// Creating individual cards with user data
 const allteamCards = (employeeProfiles) => {
   const teamCards = [];
 
@@ -25,21 +26,6 @@ const allteamCards = (employeeProfiles) => {
   </article>`;
   };
 
-  // const createEmployee = (employee) => {
-  //   return `<article class="individualCards">
-  //   <div class="cardHeader">
-  //   <h2> Name: ${employee.name}</h2>
-  //   </div>
-  //   <div class="cardBody">
-  //   <h3> Team role: ${employee.getRole()}</h3>
-  //   <ul>
-  //   <li> id: ${employee.id}</li>
-  //   <li> Email: <a href="mailto:${manager.email}?subject=Introduction">${manager.email}</a></li>
-
-  //   </ul>
-  //   </div>
-  //   </article>`
-  //   };
 
   const createEngineer = (engineer) => {
     return `<article class="individual-card">
@@ -80,17 +66,13 @@ const allteamCards = (employeeProfiles) => {
       </article>`;
   };
 
+  // pushing arrays of data in team cards then mapping to employeeProfiles
   teamCards.push(
     employeeProfiles
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => createManager(manager))
   );
 
-  teamCards.push(
-    employeeProfiles
-      .filter((employee) => employee.getRole() === "Employee")
-      .map((employee) => createEmployee(employee))
-  );
 
   teamCards.push(
     employeeProfiles

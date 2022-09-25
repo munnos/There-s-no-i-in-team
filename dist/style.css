@@ -1,12 +1,15 @@
-/* Don't need to do template literals for this. Look at mini project for wk9. CSS styling
-will be hard coded */
+/* Importing font "Inter Tight" from google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap');
+
+/* Removing browser default styling */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Inter Tight", sans-serif;
 }
+
+/* /////////////////////////////////////////////////////////// */
 
 .header {
   width: 100%;

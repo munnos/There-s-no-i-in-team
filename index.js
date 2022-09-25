@@ -1,17 +1,22 @@
-// importing modules
+// importing modules to write teamPage.html file and enable prompt functionality
 const inquirer = require("inquirer");
 const fs = require("fs");
+
 // importing classes
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+// Requiring generateHTML file that will be populated with data
 const generatehtmlFile = require("./dist/generateHTML");
+// Empty array data is pushed to
 const employeedataArray = [];
 const path = require("path");
 
-const renderedHTML = path.join(__dirname, "template.html");
+// Variable setting where finished HTML will be generated
+const renderedHTML = path.join(__dirname, "teamPage.html");
 
+//  User prompts to get data needed to generate teamPage
 function main() {
   async function createManager() {
     await inquirer
@@ -51,6 +56,8 @@ function main() {
         addemployeeOption();
       });
   }
+
+  // Option to add employee called after each new employee is generated. If user selects "no" HTML page is dynamically generated with data inputted.
 
   async function addemployeeOption() {
     await inquirer
@@ -110,33 +117,7 @@ function main() {
       });
   }
 
-  // async function createEmployee() {
-  //   await inquirer
-  //     .prompt([
-  //       {
-  //         type: "input",
-  //         name: "employeeName",
-  //         message: "What is the Employee's name?",
-  //       },
-  //       {
-  //         type: "input",
-  //         name: "employeeId",
-  //         message: "What is the Employee's ID?",
-  //       },
-  //       {
-  //         type: "input",
-  //         name: "engineerEmail",
-  //         message: "What is the Employee's email address?",
-  //       },
-  //     ])
-  //     .then((data) => {
-  //       console.log(data);
-  //       const employeeData = new Employee(data.employeeName, data.employeeId, data.engineerEmail);
-  //       employeedataArray.push(employeeData);
-  //       console.log(employeedataArray);
-  //       addemployeeOption();
-  //     });
-  // }
+
 
   async function createEngineer() {
     await inquirer
@@ -189,8 +170,7 @@ function main() {
       .then((data) => {
         console.log(data);
 
-        // if (data.teamRole === "") {
-        //   createEmployee();
+     
         if (data.teamRole === "Engineer") {
           createEngineer();
         } else if (data.teamRole === "Intern") {
@@ -201,13 +181,15 @@ function main() {
       });
   }
 
+  // Function to write file
+
   const generateHTML = () => {
     fs.writeFileSync(
       renderedHTML,
       generatehtmlFile(employeedataArray),
       console.log(employeedataArray),
       "utf-8",
-      console.log("check for finished page under template.html"));
+      console.log("Check for finished page at teamPage.html!"));
   };
   createManager();
   };

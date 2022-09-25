@@ -140,7 +140,7 @@ function main() {
         {
           type: "input",
           name: "engineerGithub",
-          message: "What is the Engineer's github url?",
+          message: "What is the Engineer's github username?",
         },
       ])
       .then((data) => {

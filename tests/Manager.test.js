@@ -1,7 +1,7 @@
 const Manager = require("../lib/Manager");
 
 
-describe("Engineer", () => {
+describe("Manager", () => {
     describe("Initialisation", () => {
     it("should create manager object", () => {
       const m = new Manager();
